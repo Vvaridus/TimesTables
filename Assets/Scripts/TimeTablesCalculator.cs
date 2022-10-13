@@ -6,28 +6,38 @@ using TMPro;
 public class TimeTablesCalculator : MonoBehaviour
 {
     public TextMeshProUGUI firstNumber;
-    public TextMeshProUGUI secondNumber;
+    public TextMeshProUGUI secondNumber;    
 
-    public int IntFirstNumber;
-    public int IntSecondNumber;
+    public TMP_InputField userAnswer;
 
-    public int answer;
+    public int firstIntNumber;
+    public int secondIntNumber;
+
+    public int answerInt;
+    public int userIntAnswer;
 
     private void Start()
     {
-        CalculateTimesTable();
     }
 
     public void CalculateTimesTable()
     {
-        IntFirstNumber = Random.Range(1, 13);
-        IntSecondNumber = Random.Range(1, 13);
+        firstIntNumber = Random.Range(1, 13);
+        secondIntNumber = Random.Range(1, 13);
 
-        answer = IntFirstNumber * IntSecondNumber;
+        answerInt = firstIntNumber * secondIntNumber;
 
-        firstNumber.text = IntFirstNumber.ToString();
-        secondNumber.text = IntSecondNumber.ToString();
+        firstNumber.text = firstIntNumber.ToString();
+        secondNumber.text = secondIntNumber.ToString();
 
-        Debug.Log("Answer = " + answer);
+        Debug.Log("Answer = " + answerInt);
+
+        SubmitAnswer();
+    }
+
+    public void SubmitAnswer()
+    {
+        int.TryParse(userAnswer.text, out userIntAnswer);
+        Debug.Log("User Input: " + userIntAnswer);
     }
 }
