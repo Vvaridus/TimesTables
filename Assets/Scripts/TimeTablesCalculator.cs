@@ -5,6 +5,7 @@ using TMPro;
 
 public class TimeTablesCalculator : MonoBehaviour
 {
+    public TextMeshProUGUI changingQuestionNumber;
     public TextMeshProUGUI firstNumber;
     public TextMeshProUGUI secondNumber;
 
@@ -18,13 +19,27 @@ public class TimeTablesCalculator : MonoBehaviour
     public int answerInt;
     public int userIntAnswer;
 
+    private int quizCounter;
+
     private void Start()
     {
+        quizCounter = 0;
+        changingQuestionNumber.text = quizCounter.ToString();
+    }
+
+    public void RunQuiz()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            quizCounter++;
+            CalculateTimesTable();
+            changingQuestionNumber.text = quizCounter.ToString();
+        }
     }
 
     public void CalculateTimesTable()
     {
-        firstIntNumber = Random.Range(1, 13);
+        firstIntNumber = TableSelectionManager.MyInstance.selectedTable;
         secondIntNumber = Random.Range(1, 13);
 
         answerInt = firstIntNumber * secondIntNumber;
