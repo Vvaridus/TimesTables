@@ -7,7 +7,7 @@ public class MenuManager : MonoBehaviour
     public CanvasGroup mainMenuCanvas;
     public CanvasGroup learnCanvas;
     public CanvasGroup tablesCanvas;
-    public CanvasGroup quizCanvas;
+    public CanvasGroup quizCanvas;    
 
     public void MoveFromTablesToQuiz()
     {
