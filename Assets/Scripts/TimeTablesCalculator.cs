@@ -33,39 +33,32 @@ public class TimeTablesCalculator : MonoBehaviour
         userScoreCorrect = 0;
         userScoreIncorrect = 0;
         changingQuestionNumber.text = quizCounter.ToString();
-        //CalculateTimesTable();
-    }
-
-    public void RunQuiz()
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            quizCounter++;
-            CalculateTimesTable();
-            changingQuestionNumber.text = quizCounter.ToString();
-        }
     }
 
     public void CalculateTimesTable()
     {
         answerOutput.text = "";
+        userAnswer.text = "";
+
         firstIntNumber = TableSelectionManager.MyInstance.selectedTable;
         secondIntNumber = Random.Range(1, 13);
-
-        answerInt = firstIntNumber * secondIntNumber;
-
         firstNumber.text = firstIntNumber.ToString();
         secondNumber.text = secondIntNumber.ToString();
 
+        MultiplyTwoNumbers(firstIntNumber, secondIntNumber);
+
         //testing call needs changed to be active on user input
         Debug.Log("Answer = " + answerInt);
-        //SubmitAnswer();
+    }
+
+    public void MultiplyTwoNumbers(int numberOne, int numberTwo)
+    {
+        answerInt = numberOne * numberTwo;        
     }
 
     public void SubmitAnswer()
     {
         int.TryParse(userAnswer.text, out userIntAnswer);
-        Debug.Log("User Input: " + userIntAnswer);
 
         if (answerInt == userIntAnswer)
         {
